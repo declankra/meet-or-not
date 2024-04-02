@@ -18,28 +18,40 @@ new_thread = client.beta.threads.create(
   messages=[
     {
       "role": "user",
-      "content": "Crate a meeting agenda based off the following user's purpose, expected outcome type, expected outcome, and priority.",
+      "content": "Create a meeting agenda based off the following user's purpose, expected outcome type, expected outcome, and priority.",
       ##"file_ids": [file_id]
     }
   ]
 )
-thread_id = new_thread.id
+# get thread id
+my_thread_id = new_thread.id
 
 # create run
-run = client.beta.threads.runs.create(
-  thread_id=thread_id,
-  assistant_id=meet_or_not_asst
+new_run = client.beta.threads.runs.create(
+    my_thread_id = my_thread_id,
+    assistant_id=meet_or_not_asst
 )
-run_id = run.id
-
-# check run status
-run = client.beta.threads.runs.retrieve(
-  thread_id=thread_id,
-  run_id=run_id
-)
-
-#print thread message
-thread_messages = client.beta.threads.messages.list(thread_id)
-print(thread_messages.data)
+# get run id
+run_id = new_run.id
 
 
+# print messages in thread
+messages = client.beta.threads.messages.list(my_thread_id)
+print(messages.data)
+
+
+## print messages in thread
+messages = client.beta.threads.messages.list(my_thread_id)
+response = messages.data[0].content[0].text.value
+response
+
+
+
+
+
+
+## check run status
+##run = client.beta.threads.runs.retrieve(
+ ## thread_id=thread_id,
+ ##run_id=run_id
+##) 
