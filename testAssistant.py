@@ -3,6 +3,7 @@ import os
 load_dotenv()
 from openai import OpenAI
 from flask import Flask, request, jsonify
+import json
 
 
 # import and define OpenAI API key
@@ -11,11 +12,12 @@ client = OpenAI(
     api_key=OPENAI_KEY,
 )
 ASSISTANT_KEY = os.getenv("ASSISTANT_KEY")
-meet_or_not_asst = client.beta.assistants.retrieve(ASSISTANT_KEY)
+meet_or_not_asst = ASSISTANT_KEY
 
 ## import user inputs for meeting info && parse into message/file
+with open('sample1.json', 'r') as file:
+    data = json.load(file)
 # Extract user inputs from the request
-data = request.get_json(file)
 meeting_purpose = data.get('meeting_purpose')
 outcome_type = data.get('expected_outcome_type')
 expected_outcome = data.get('expected_outcome')
@@ -30,49 +32,46 @@ message = (f"Based on the following user inputs, create a meeting agenda:\n"
                )
 
 ## create thread
-new_thread = client.beta.threads.create(
-  messages=[
-    {
-      "role": "user",
-      "content": message,
-      ##"file_ids": [file_id]
-    }
-  ]
+thread = client.beta.threads.create(
 )
 # get thread id
-my_thread_id = new_thread.id
+thread_id = thread.id
+
+# Create the user message and add it to the thread
+message = client.beta.threads.messages.create(
+    thread_id=thread.id,
+    role="user",
+    content=message,
+)
 
 # create run
-new_run = client.beta.threads.runs.create(
-    my_thread_id = my_thread_id,
+run = client.beta.threads.runs.create(
+    thread_id = thread_id,
     assistant_id=meet_or_not_asst
 )
 # get run id
-run_id = new_run.id
+run_id = run.id
+
+while run.status != "completed":
+    keep_retrieving_run = client.beta.threads.runs.retrieve(
+        thread_id=thread.id,
+        run_id=run.id
+    )
+    print(f"Run status: {keep_retrieving_run.status}")
+    
+    if keep_retrieving_run.status == "completed":
+        print("\n")
+        break
+
+# Retrieve messages added by the Assistant to the thread
+all_messages = client.beta.threads.messages.list(
+    thread_id=thread.id
+)
+
+# Print the messages from the user and the assistant
+print("###################################################### \n")
+print(f"USER: {message.content[0].text.value}")
+print(f"ASSISTANT: {all_messages.data[0].content[0].text.value}")
 
 
-# print messages in thread
-messages = client.beta.threads.messages.list(my_thread_id)
-print(messages.data)
-
-
-## print messages in thread
-messages = client.beta.threads.messages.list(my_thread_id)
-response = messages.data[0].content[0].text.value
-response
-
-
-
- # Extract and structure the API response into a meeting agenda format
-agenda = response.choices[0].message['content'].strip()
-# Return the generated meeting agenda
-jsonify({"agenda": agenda})
-
-
-
-
-## check run status
-##run = client.beta.threads.runs.retrieve(
- ## thread_id=thread_id,
- ##run_id=run_id
-##) 
+# Extract and structure the API response into a meeting agenda format
