@@ -63,6 +63,11 @@ response
 
 
 
+ # Extract and structure the API response into a meeting agenda format
+agenda = response.choices[0].message['content'].strip()
+# Return the generated meeting agenda
+jsonify({"agenda": agenda})
+
 
 
 
