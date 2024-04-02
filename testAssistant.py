@@ -23,20 +23,22 @@ new_thread = client.beta.threads.create(
     }
   ]
 )
-
 thread_id = new_thread.id
 
+# create run
 run = client.beta.threads.runs.create(
   thread_id=thread_id,
   assistant_id=meet_or_not_asst
 )
 run_id = run.id
 
+# check run status
 run = client.beta.threads.runs.retrieve(
   thread_id=thread_id,
   run_id=run_id
 )
 
+#print thread message
 thread_messages = client.beta.threads.messages.list(thread_id)
 print(thread_messages.data)
 
