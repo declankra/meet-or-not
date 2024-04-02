@@ -1,0 +1,25 @@
+{
+    "meetings": [
+      {
+        "type": "Decision Meeting Invite",
+        "subject": "Decision Meeting on [Topic/Project Name]",
+        "body": "Hello Team,\n\nWe're convening a decision meeting to tackle [brief description of the decision to be made].\n\nPurpose: To make [a hard/uncertain/routine] decision regarding [specific topic or project aspect].\n\nExpected Outcome: Concrete decisions on [list the key decisions to be made].\n\nAgenda:\n- Review of background information and context\n- Discussion of potential options and implications\n- Decision-making on [specific points]\n\nPreparation:\nPlease review the attached materials and come prepared with your insights and readiness to vote on the decision points.\n\nDate and Time: [Date and Time]\n\nLocation: [Physical location or virtual meeting link]\n\nAssigned Leads:\n- [Name] for background context\n- [Name] for options discussion\n\nLooking forward to productive decisions,\n[Your Name]"
+      },
+      {
+        "type": "Discussion Meeting (Creative Solutions) Invite",
+        "subject": "Creative Solutions Discussion for [Topic/Project Name]",
+        "body": "Hello Team,\n\nLet’s gather our collective creativity to explore innovative solutions for [brief description of the topic or challenge].\n\nPurpose: To identify potential innovative solutions that will inform our decision-making on [specific topic].\n\nExpected Outcome: A list of creative solutions and approaches for further consideration and eventual decision making.\n\nAgenda:\n- Brief overview of the challenge\n- Brainstorming session\n- Evaluation of proposed solutions\n\nPreparation:\nCome prepared with any preliminary ideas and an open mind for collaborative brainstorming.\n\nDate and Time: [Date and Time]\n\nLocation: [Physical location or virtual meeting link]\n\nAssigned Leads:\n- [Name] for session moderation\n\nLooking forward to your innovative ideas,\n[Your Name]"
+      },
+      {
+        "type": "Discussion Meeting (Coordination) Invite",
+        "subject": "Coordination Meeting for [Project/Topic Name]",
+        "body": "Hello Team,\n\nWe need to align our efforts and ensure everyone is on the same page regarding [project/topic]. Your input and ideas are crucial.\n\nPurpose: To coordinate actions, gather input, and crowdsource ideas for [specific aspects of the project/topic].\n\nExpected Outcome: Clear next steps and action items for all involved parties.\n\nAgenda:\n- Current status update\n- Discussion on action items and assignments\n- Finalization of next steps\n\nPreparation:\nPlease come prepared to discuss your current progress, any challenges you're facing, and suggestions for collective action.\n\nDate and Time: [Date and Time]\n\nLocation: [Physical location or virtual meeting link]\n\nAssigned Leads:\n- [Name] for status updates\n- [Name] for action item discussion\n\nLooking forward to our coordinated efforts,\n[Your Name]"
+      },
+      {
+        "type": "Information Sharing Meeting Invite",
+        "subject": "Information Sharing Session on [Topic/Project Name]",
+        "body": "Hello Team,\n\nAn information sharing session has been scheduled to ensure everyone is updated and has the opportunity to ask questions on [topic/project].\n\nPurpose: To share important information regarding [topic/project] and address any concerns or questions.\n\nExpected Outcome: Enhanced awareness and understanding among the team, with all questions answered.\n\nAgenda:\n- Presentation of [topic/project] updates\n- Q&A session\n\nPreparation:\nPlease review the pre-meeting materials provided and jot down any questions you may have.\n\nDate and Time: [Date and Time]\n\nLocation: [Physical location or virtual meeting link]\n\nAssigned Leads:\n- [Name] for the presentation\n- [Name] for facilitating Q&A\n\nLooking forward to keeping everyone informed and addressing your questions,\n[Your Name]"
+      }
+    ]
+  }
+  
