@@ -15,7 +15,7 @@ ASSISTANT_KEY = os.getenv("ASSISTANT_KEY")
 meet_or_not_asst = ASSISTANT_KEY
 
 ## import user inputs for meeting info && parse into message/file
-with open('sample1.json', 'r') as file:
+with open('sample_input.json', 'r') as file:
     data = json.load(file)
 # Extract user inputs from the request
 meeting_purpose = data.get('meeting_purpose')
